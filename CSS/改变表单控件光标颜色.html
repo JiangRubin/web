@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        form {
+            width: 80vw;
+            margin: 20px auto;
+        }
+
+        /* input,
+        textarea {
+            color: red;
+            text-shadow: 0px 0px 0px #D60B0B;
+            -webkit-text-fill-color: transparent;
+        }
+
+        input::-webkit-input-placeholder {
+            color: rgb(60, 0, 248);
+            text-shadow: none;
+            -webkit-text-fill-color: initial;
+        } */
+
+        input,
+        textarea,
+        [contenteditable] {
+            color: red;
+            text-shadow: 0px 0px 0px #495057;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @supports (caret-color: red) {
+            input,
+            textarea,
+            [contenteditable] {
+                color: #495057;
+                caret-color: red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </form>
+</body>
+
+</html>
