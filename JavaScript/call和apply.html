@@ -18,20 +18,15 @@
         // fn.call(this, ...[1, 5])
         // fn.apply(this, [1, 5])
 
-        // 
-        var a = 1
-
-        function foo() {
-            console.log(a)
-            var a = 2
-
-            function test() {
-                console.log(a)
-            }
-
-            test()
+        //
+        var name = 'hehe'
+        var obj = {
+            name: 'jrb'
         }
-        foo()
+        var fn = function () {
+            console.log(this.name)
+        }
+        setTimeout(fn.bind(), 1000)
     </script>
 </body>
 
