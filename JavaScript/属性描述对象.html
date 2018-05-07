@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Object.getOwnPropertyDescriptor()
+        // var obj = {
+        //     p: 'a',
+        //     name: 'jrb',
+        // };
+
+        // console.log(Object.getOwnPropertyDescriptor(obj, 'name'))
+
+        // 存取器
+        // var obj = {
+        //     get p() {
+        //         return 'getter';
+        //     },
+        //     set p(value) {
+        //         console.log('setter: ' + value);
+        //     }
+        // };
+        // console.log(obj.p)
+
+        // var obj = {
+        //     $n: 5,
+        //     get next() {
+        //         return this.$n++
+        //     },
+        //     set next(n) {
+        //         if (n >= this.$n) this.$n = n;
+        //         else throw new Error('新的值必须大于当前值');
+        //     }
+        // };
+
+        // console.log(obj.next)
+        // obj.next = 10
+        // console.log(obj.next)
+
+        // 对象拷贝
+        // var extend = function (to, from) {
+        //     for (var property in from) {
+        //         to[property] = from[property];
+        //     }
+
+        //     return to;
+        // }
+
+        // console.log(extend({}, {
+        //     get a() {
+        //         return 1
+        //     }
+        // }))
+
+        function deepClone(obj) {
+            var newObj = obj instanceof Array ? [] : {};
+            if(typeof obj !== 'object') { return obj }
+            Object.keys(obj).forEach(key => {
+                newObj[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+            })
+            return newObj
+        }
+
+        var obj1 = {
+            name: 'jrb',
+            arr: [1, 2, 3],
+            obj: {
+                arr: [2]
+            }
+        }
+
+        var obj2 = deepClone(5)
+        console.log(obj1)
+        console.log(obj2)
+    </script>
+</body>
+
+</html>
