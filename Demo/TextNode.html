@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="border: 1px solid red">
+        <p id="p1">一段话的第一行.
+            <br />
+        </p>
+    </div>
+    <button onclick="addTextNode();">添加一个文本节点.</button>
+    <script>
+        function addTextNode() {
+            var newtext = document.createTextNode("动态添加一些文本");
+            var para = document.getElementById("p1");
+            para.appendChild(newtext);
+        }
+    </script>
+</body>
+
+</html>
