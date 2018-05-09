@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [5, 3, 12, 2, 8, 5, 20, 7, 4, 6, 10, 2, 6, 8]
+        
+        // 1.数组存放，indexOf()判断
+        // JS引擎在实现indexOf()的时候会遍历数组直到找到目标为止，此函数会浪费掉很多时间。所有这两种方式都不是最优的解决方式
+        // function unique(arr) {
+        //     var data = []; // 存放已遍历的满足条件的元素
+        //     for (var i = 0; i < arr.length; i++) {
+        //         // indexOf()判断当前元素是否已存在
+        //         if (data.indexOf(arr[i]) == -1) {
+        //             data.push(arr[i])
+        //         }
+        //     }
+        //     return data
+        // }
+
+        // function unique(arr) {
+        //     var data = [arr[0]]; // 创建一个新的临时数组，并且把当前数组的第一元素存入到数组中
+        //     for (var i = 1; i < arr.length; i++) { // 从第二项开始遍历
+        //         // 如果当前数组的第i项在当前数组中第一次出现的位置不是i，那么表示第i项是重复的，忽略掉，否则存入结果数组
+        //         if (arr.indexOf(arr[i]) == i) {
+        //             data.push(arr[i])
+        //         }
+        //     }
+        //     return data
+        // }
+
+        // ES5简化版
+        // function unique(arr) {
+        //     return arr.filter((e, i) => arr.indexOf(e) === i)
+        // }
+        // ES6简化版
+        // function unique(arr) {
+        //     return Array.from(new Set(arr))
+        // }
+        // 或
+        // function unique(arr) {
+        //     return [...new Set(arr)]
+        // }
+        // console.log(unique(arr))
+
+
+        // 2.对象存放，哈希算法(映射)判断
+        // 但从耗时的角度来讲，这是最优的一种解决方式。但是从内存占用角度来说，这并不是最优的，因为多了一个hash表。这就是所谓的空间换时间（世间安得双全法？）
+        // function unique(arr) {
+        //     var hash = {},
+        //         data = [];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (!hash[arr[i]]) {
+        //             hash[arr[i]] = true
+        //             data.push(arr[i])
+        //         }
+        //     }
+        //     return data
+        // }
+        // console.log(unique(arr))
+    </script>
+</body>
+
+</html>
