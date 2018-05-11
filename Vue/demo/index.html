@@ -11,27 +11,29 @@
 
 <body>
     <div id="app">
-        <todo-item
+        <!-- <todo-item
           v-for="item in groceryList"
           :todo="item.text"
           :key="item.id"
-        ></todo-item>
+        ></todo-item> -->
+        <div v-for="item in items">{{ item }}</div>
     </div>
     <script>
-        Vue.component('todo-item', {
-            props: ['todo'],
-            template: '<li>{{ todo }}</li>'
-        })
+        // Vue.component('todo-item', {
+        //     props: ['todo'],
+        //     template: '<li>{{ todo }}</li>'
+        // })
 
         var vm = new Vue({
             el: '#app',
             data: {
                 a: 1,
-                groceryList: [
-                    { id: 0, text: '蔬菜' },
-                    { id: 1, text: '奶酪' },
-                    { id: 2, text: '随便其它什么人吃的东西' }
-                ]
+                // groceryList: [
+                //     { id: 0, text: '蔬菜' },
+                //     { id: 1, text: '奶酪' },
+                //     { id: 2, text: '随便其它什么人吃的东西' }
+                // ],
+                items: ['a', 'b', 'c']
             }
         })
     </script>
