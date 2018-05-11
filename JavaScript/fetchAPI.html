@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var url = 'https://cnodejs.org/api/v1/topics?page=0&tab=good&limit=10'
+        // fetch(url)
+        // .then(function (response) {
+        //     return response.json()
+        // })
+        // .then(function (data) {
+        //     console.log(data)
+        // })
+
+        async function fetchData() {
+            let res = await fetch(url)
+            let data = await res.json();
+            console.log(data);
+        }
+
+        fetchData()
+    </script>
+</body>
+
+</html>

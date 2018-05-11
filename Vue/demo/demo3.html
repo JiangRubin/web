@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Add a todo">
+        <ul>
+            <todo-item v-for="(todo, index) in todos" :key="todo.id" :index="todo.id" :title="todo.title" v-on:remove="todos.splice(index, 1)"></todo-item>
+        </ul>
+    </div>
+    <script>
+        Vue.component('todo-item', {
+            props: ['title'],
+            template: '\
+                <li>\
+                {{ title }}\
+                <button v-on:click="$emit(\'remove\')">X</button>\
+                </li>\
+            '
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                newTodoText: '',
+                todos: [{
+                        id: 1,
+                        title: 'Do the dishes',
+                    },
+                    {
+                        id: 2,
+                        title: 'Take out the trash',
+                    },
+                    {
+                        id: 3,
+                        title: 'Mow the lawn'
+                    }
+                ],
+            },
+            computed: {
+
+            },
+            methods: {
+                addNewTodo() {
+                    this.todos.push({
+                        id: this.todos[this.todos.length - 1].id + 1,
+                        title: this.newTodoText
+                    })
+                    this.newTodoText = ''
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

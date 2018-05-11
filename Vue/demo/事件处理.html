@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="warn(name, $event)">
+            Submit
+        </button>
+
+        <input @keyup.page-down="onPageDown">
+        <input @keyup.alt.67="clear">
+
+        <!-- Ctrl + Click -->
+        <div @click.ctrl.exact="doSomething">Do something</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'jrb',
+                msg: 'Form cannot be submitted yet.'
+            },
+            computed: {
+
+            },
+            methods: {
+                doSomething() {
+                    console.log('doSomething')
+                },
+                clear() {
+                    console.log('clear')
+                },
+                onPageDown(e) {
+                    console.log(e.target.value)
+                },
+                warn: function (message, event) {
+                    // 现在我们可以访问原生事件对象
+                    if (event) event.preventDefault()
+                    alert(message)
+
+                    console.log(event)
+                },
+                // greet: function (event) {
+                //     // `this` 在方法里指向当前 Vue 实例
+                //     alert('Hello ' + this.name + '!')
+                //     // `event` 是原生 DOM 事件
+                //     if (event) {
+                //         console.log(event)
+                //     }
+                // }
+            }
+        })
+    </script>
+</body>
+
+</html>

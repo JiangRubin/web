@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- <li v-for="n in even(numbers)">{{ n }}</li>
+
+        <ul>
+            <template v-for="item in items" v-if="item.name != 'jrb'">
+                <li>{{ item.msg }}</li>
+                <li class="divider">{{ item.name }}</li>
+            </template>
+        </ul> -->
+        <my-component v-for="(item, index) in items" v-bind:item="item" v-bind:index="index" v-bind:key="item.id"></my-component>
+    </div>
+    <script>
+        Vue.component('my-component', {
+            props: ['item'],
+            template: '<div>{{ item.msg }}</div>'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                numbers: [1, 2, 3, 4, 5],
+                items: [{
+                        msg: '11111111',
+                        name: 'HHH'
+                    },
+                    {
+                        msg: 'kkkkkkkk',
+                        name: 'jrb'
+                    },
+                ]
+            },
+            computed: {
+                evenNumbers() {
+                    return this.numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            },
+            methods: {
+                even: function (numbers) {
+                    return numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
